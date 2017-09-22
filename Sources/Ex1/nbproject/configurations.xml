@@ -8,10 +8,17 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>goal.bmp</itemPath>
+      <itemPath>input.bmp</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>GraphFromImage.cpp</itemPath>
+      <itemPath>GraphFromImage.h</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>ParcoursEnProfondeur.h</itemPath>
+      <itemPath>bitmap_image.hpp</itemPath>
       <itemPath>ex1.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -39,7 +46,21 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="GraphFromImage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphFromImage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ParcoursEnProfondeur.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bitmap_image.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ex1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="goal.bmp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="input.bmp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -63,7 +84,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="GraphFromImage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphFromImage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ParcoursEnProfondeur.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bitmap_image.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ex1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="goal.bmp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="input.bmp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

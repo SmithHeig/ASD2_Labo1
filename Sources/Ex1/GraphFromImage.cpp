@@ -13,15 +13,15 @@ GraphFromImage::Iterable GraphFromImage::adjacent(int v) const {
     if(ligne != 0 && same_pixel(colonne, ligne, colonne, ligne - 1)){
         list.push_back(idx(colonne, ligne - 1));
     }
-    //Left
+    // Gauche
     if(colonne != 0 && same_pixel(colonne,ligne, colonne - 1, ligne)){
         list.push_back(idx(colonne - 1, ligne));
     }
-    //Right
+    // Droite
     if(colonne != image.width() && same_pixel(colonne, ligne, colonne + 1, ligne)){
         list.push_back(idx(colonne + 1, ligne));
     }
-    // Bottom
+    // Bas
     if(ligne != image.height() && same_pixel(colonne, ligne, colonne, ligne + 1)){
         list.push_back(idx(colonne, ligne + 1));
     }

@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <iterator>
 #include <map>
+#include <list>
 
 #include "Util.h"
 
@@ -27,7 +28,12 @@ class SymbolGraph
     typedef GraphType Graph; 
 private:
     Graph* g;
-    std::map<std::string,int> indexs;
+    
+    // Nous avons décidé d'optimiser la vitesse d'exécution (nombre d'itération) au dépend de la mémoire vive prise.
+    // En effet, nous aurions pu créer un ficher contenant nos listes, mais cette version aurait été théoriquement moins rapide.
+    // Cependant, elle aurait utilisé moins de RAM
+    std::map<std::string, int> indexs;  // .find() en O(log(n)) et .insert() en log(n)
+    std::list<int> graph;               // Push_back() et pop_front() sont de complexité constante
     
 public:
     
@@ -44,9 +50,9 @@ public:
         std::ifstream s(filename);
         
         int id = 0;
+        int nbArete = 0;
         
-        this->g = new Graph(300000); //sale
-        
+        //this->g = new Graph(300000); //sale
         
         while (std::getline(s, line))
         {
@@ -55,16 +61,28 @@ public:
             indexs.insert(std::pair<std::string,int>(names.at(0),id));
             int idFilm = id++;
             for(int i = 1; i < names.size(); ++i) {
-                // add new actor
+                graph.push_back(idFilm);
                 if(contains(names.at(i)) == true){
-                    g->addEdge(idFilm,index(names.at(i)));
+                    graph.push_back(index(names.at(i)));
                 } else {
                     indexs.insert(std::pair<std::string,int>(names.at(i),id));
-                    g->addEdge(idFilm,id++);
+                    graph.push_back(id++);
                 }
+                ++nbArete;
             }
         }
         s.close();
+        
+        this->g = new Graph(nbArete);
+        int film, acteur;
+        
+        for(size_t i = 0; i < nbArete; ++i){
+            film = graph.front();
+            graph.pop_front();
+            acteur = graph.front();
+            graph.pop_front();
+            g->addEdge(film, acteur);
+        }
         
         /* A IMPLEMENTER */
     }

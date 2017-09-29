@@ -27,7 +27,11 @@ int main(int argc, char** argv) {
     DFS<GraphFromImage> dfs(G);
 
     //Question BONUS: Pourquoi n'utilisons-nous pas la methode visite pour parcourir l'image ?
-    
+    /*
+     Car l'image n'est pas un graphe. C'est juste un ensemble de points mais aucune arrête ne les relie.
+     * IL est donc impossible de naviguer dans l'image sans graphe
+     
+     */
     //on colore la carotte
     int x = 250, y = 400;
     dfs.iterativeVisit( G.idx(x,y), [&G, &image] (int v) {

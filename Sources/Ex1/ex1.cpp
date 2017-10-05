@@ -28,8 +28,8 @@ int main(int argc, char** argv) {
 
     //Question BONUS: Pourquoi n'utilisons-nous pas la methode visite pour parcourir l'image ?
     /*
-     Car l'image n'est pas un graphe. C'est juste un ensemble de points mais aucune arrête ne les relie.
-     * IL est donc impossible de naviguer dans l'image sans graphe
+     Car la méthode visite est récursive. Elle ne fonctionnerait pas sur une image contenant trop de pixels.
+     La mémoire alouée au programme sera vite dépassée (stackoverflow) --> Erreur.
      
      */
     //on colore la carotte

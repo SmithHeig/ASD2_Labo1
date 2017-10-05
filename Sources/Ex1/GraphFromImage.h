@@ -20,7 +20,13 @@ public:
     typedef std::list<int> Iterable;
 
     Iterable adjacent(int v) const; //sommets adjacents
+    
+    /*
+        Méthode si un pixel à une coordonée (x1,y1) et de la même couleur (RGB) qu'un autre pixel à la coordonée (x2, y2)
+    */
     bool same_pixel(int x1, int y1, int x2, int y2) const;
+    
+    
     int V() const;                  //nombre de sommets
 
     int idx(int x, int y) const;    //index du sommet représentant le pixel a la position x, y

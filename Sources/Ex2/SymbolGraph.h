@@ -52,8 +52,8 @@ public:
         int id = 0;
         int nbArete = 0;
         
-        //this->g = new Graph(300000); //sale
-        
+        // Indexion des noms de films et auteurs dans une map
+        // Lecture du fichier en ordonnant: Filme Acteur Film Acteur Film... dans une liste en utilisant leur index
         while (std::getline(s, line))
         {
             auto names = split(line,'/');
@@ -73,9 +73,11 @@ public:
         }
         s.close();
         
+        // Création du graphe
         this->g = new Graph(nbArete);
         int film, acteur;
         
+        // Insersion des éléments deux à deux (film, acteur) dans le graphe
         for(size_t i = 0; i < nbArete; ++i){
             film = graph.front();
             graph.pop_front();

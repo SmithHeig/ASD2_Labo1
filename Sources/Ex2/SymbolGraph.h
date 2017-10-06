@@ -1,8 +1,11 @@
 /* 
  * File:   SymbolGraph.h
  * Author: Olivier Cuisenaire
+ * Modified by: Jérémie Chatillon et James Smith
  *
  * Created on 26. septembre 2014, 15:08
+ * Last modification on 06.10.2017
+ * 
  */
 
 #ifndef SYMBOLGRAPH_H
@@ -41,8 +44,15 @@ public:
     {
         delete g; 
     }            
-    
-    //creation du SymbolGraph a partir du fichier movies.txt
+    //
+    // @brief Creation du SymbolGraph a partir d'un fichier texte
+    //
+    // @param string: nom du fichier (exemple film.txt)
+    //        Le fichier doit être dans le format: 
+    //        FILM/ACTEUR/ACTEUR/...
+    //        FILM/ACTEUR/ACTEUR/...
+    //        ...
+    //
     SymbolGraph(const std::string& filename) {         
         //lecture du fichier, ligne par ligne puis element par element (separe par des /)
         std::string line;
@@ -89,7 +99,13 @@ public:
         /* A IMPLEMENTER */
     }
     
-    //verifie la presence d'un symbole
+    //
+    // @brief Verifie si un film (symbole) est à déjà été indexé
+    //
+    // @param string: name - Nom du film.
+    //
+    // @return True si le film est dans la list et false si le film n'y est pas
+    //
     bool contains(const std::string& name) {
         if(indexs.find(name) != indexs.end()){
             return true;
@@ -97,21 +113,46 @@ public:
         return false;
     }
     
-    //index du sommet correspondant au symbole
+    //
+    // @brief Retourne l'index d'un film (symbole)
+    //
+    // @param string: name - Nom du film.
+    //
+    // @return int: index - Numéro de l'index du film dans la list
+    //
+    // @warning il faut toujours utilisé la fonction 
+    //          "bool contains(const std::string& name)" avant d'appeler cette fonction
+    //          ce choix et une raison d'optimisation de temps d'execution. 
+    //          Pas besoin de double check
+    //
     int index(const std::string& name) {
         return indexs.find(name)->second;
     }
     
-    //symbole correspondant au sommet
+    //
+    // @brief Retourner le nom du film à un certain index
+    //
+    // @param int: idx - index du film à retourné le nom
+    //
+    // @return string: name - Nom du film
+    //
     std::string name(int idx) {
         for(std::map<std::string, int>::iterator it = indexs.begin(); it != indexs.end(); ++it){
             if(it->second == idx){
                 return it->first;
             }
         }
+        return "";
     }
 
-    //symboles adjacents a un symbole
+    
+    //
+    // @brief Retourner un vecteur d'adjacence des noeuds adjacent à un noeud spécifique(nom)
+    //
+    // @param string: name - Nom du noeud
+    //
+    // @return std::vector<std::string> vector d'ajacence - Noeud adjacent au noeud (name)
+    //
     std::vector<std::string> adjacent(const std::string & name) {
         return g->adjacent(index(name));
     }

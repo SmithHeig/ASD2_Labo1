@@ -1,7 +1,6 @@
 #include "GraphFromImage.h"
 
 GraphFromImage::GraphFromImage(const bitmap_image& i) : image(i) {
-    /* A IMPLEMENTER */
 }
 
 GraphFromImage::Iterable GraphFromImage::adjacent(int v) const {
@@ -9,19 +8,20 @@ GraphFromImage::Iterable GraphFromImage::adjacent(int v) const {
     int colonne = x(v);
     int ligne = y(v);
     
-    // Haut
+    // Check si les pixels adjacent sont les mêmes
+    // Pixel en dessus
     if(ligne != 0 && same_pixel(colonne, ligne, colonne, ligne - 1)){
         list.push_back(idx(colonne, ligne - 1));
     }
-    // Gauche
+    // Pixel à gauche
     if(colonne != 0 && same_pixel(colonne,ligne, colonne - 1, ligne)){
         list.push_back(idx(colonne - 1, ligne));
     }
-    // Droite
+    // Pixel à droite
     if(colonne != image.width() && same_pixel(colonne, ligne, colonne + 1, ligne)){
         list.push_back(idx(colonne + 1, ligne));
     }
-    // Bas
+    // Pixel en dessous
     if(ligne != image.height() && same_pixel(colonne, ligne, colonne, ligne + 1)){
         list.push_back(idx(colonne, ligne + 1));
     }
